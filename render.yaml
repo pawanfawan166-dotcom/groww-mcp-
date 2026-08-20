@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: groww-mcp
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: GROWW_MOCK_MODE
+        value: "1"
+      - key: PYTHONUNBUFFERED
+        value: "1"

@@ -5,6 +5,10 @@ import asyncio
 from typing import Any
 
 from mcp.server import MCPServer
+from starlette.applications import Starlette
+from starlette.requests import Request
+from starlette.responses import JSONResponse
+from starlette.routing import Route
 
 from groww_mcp.config import Settings
 from groww_mcp.groww_client import GrowwClient
@@ -50,13 +54,37 @@ def groww_health_check() -> dict[str, Any]:
     }
 
 
+SSE_PATH = "/sse"
+SSE_MESSAGE_PATH = "/messages/"
+
+
+def build_sse_gateway_app(host: str) -> Starlette:
+    """Public SSE gateway used by Cursor mobile and the web dashboard."""
+    app = mcp.sse_app(host=host, sse_path=SSE_PATH, message_path=SSE_MESSAGE_PATH)
+
+    async def health(_request: Request) -> JSONResponse:
+        return JSONResponse(
+            {
+                "status": "ok",
+                "server": "groww-mcp",
+                "sse_url": SSE_PATH,
+                "message_url": SSE_MESSAGE_PATH,
+                "mock_mode": groww.is_mock,
+            }
+        )
+
+    app.router.routes.insert(0, Route("/", health, methods=["GET"]))
+    app.router.routes.insert(0, Route("/health", health, methods=["GET"]))
+    return app
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Run the Groww MCP server")
     parser.add_argument(
         "--transport",
-        choices=("stdio", "streamable-http"),
+        choices=("stdio", "sse", "streamable-http"),
         default="stdio",
-        help="MCP transport to expose",
+        help="MCP transport to expose. Use sse for Cursor mobile / remote dashboard URLs.",
     )
     parser.add_argument("--host", default=settings.http_host)
     parser.add_argument("--port", type=int, default=settings.http_port)
@@ -70,7 +98,7 @@ async def _run(transport: str, host: str, port: int) -> None:
 
     import uvicorn
 
-    app = mcp.streamable_http_app()
+    app = build_sse_gateway_app(host) if transport == "sse" else mcp.streamable_http_app()
     config = uvicorn.Config(app, host=host, port=port, log_level="info")
     server = uvicorn.Server(config)
     await server.serve()

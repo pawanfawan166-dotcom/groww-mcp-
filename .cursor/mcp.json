@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "groww-mcp": {
+      "url": "https://YOUR-SERVICE.onrender.com/sse"
+    }
+  }
+}
