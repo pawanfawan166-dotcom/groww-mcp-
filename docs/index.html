@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#3b82f6">
+  <meta name="description" content="Stock Market F&O full course — Roman Telugu + English. Install on phone or desktop.">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="F&O Course">
+  <title>F&O Full Course | Stock Market Futures & Options</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__header">
+        <span class="sidebar__logo">📈</span>
+        <div>
+          <h1 class="sidebar__title">F&O Master Course</h1>
+          <p class="sidebar__sub">A to Z Stock Market</p>
+        </div>
+      </div>
+      <div class="sidebar__progress">
+        <div class="progress-bar">
+          <div class="progress-bar__fill" id="overallProgress"></div>
+        </div>
+        <span class="progress-text" id="progressText">0% poorthi</span>
+      </div>
+      <nav class="module-list" id="moduleList"></nav>
+    </aside>
+
+    <main class="content">
+      <header class="content__header">
+        <button class="menu-btn" id="menuBtn" type="button" aria-label="Toggle menu">☰</button>
+        <div class="content__header-info">
+          <h2 id="moduleTitle">F&O Full Course</h2>
+          <p id="moduleSubtitle">Stock market nundi F&O varaku poorthi course</p>
+        </div>
+        <div class="header-stats">
+          <span class="badge" id="lessonBadge">12 Modules</span>
+        </div>
+      </header>
+
+      <section class="view active" id="dashboardView">
+        <div class="hero">
+          <div class="hero__content">
+            <h2>Stock Market F&O<br><span>Poorthi Course</span></h2>
+            <p>Zero nundi Hero varaku — Futures & Options trading nerchukondi. Roman Telugu + English lo sulabhamga.</p>
+            <div class="hero__actions">
+              <button class="btn btn--primary btn--large" id="startCourseBtn" type="button">Course prarambhinchu →</button>
+              <button class="btn btn--install btn--large" id="installAppBtn" type="button">📲 App Install Cheyandi</button>
+            </div>
+          </div>
+          <div class="hero__stats">
+            <div class="stat-card">
+              <span class="stat-card__num">12</span>
+              <span class="stat-card__label">Modules</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-card__num">48+</span>
+              <span class="stat-card__label">Lessons</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-card__num">10</span>
+              <span class="stat-card__label">Quizzes</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="module-grid" id="moduleGrid"></div>
+
+        <div class="disclaimer">
+          <strong>⚠️ Disclaimer:</strong> Ee course kevalam vidya prayojanalu kosam. Trading lo risk untundi. Real money invest cheyadaniki mundhu paper trading / demo account lo practice cheyandi.
+        </div>
+      </section>
+
+      <section class="view" id="lessonView" hidden>
+        <div class="lesson-nav">
+          <button class="btn btn--ghost" id="backToModules" type="button">← Modules</button>
+          <div class="lesson-tabs" id="lessonTabs"></div>
+        </div>
+        <article class="lesson-card" id="lessonCard">
+          <div class="lesson-card__header">
+            <span class="lesson-card__module" id="lessonModuleLabel"></span>
+            <h3 id="lessonTitle"></h3>
+          </div>
+          <div class="lesson-card__body" id="lessonBody"></div>
+          <div class="lesson-card__keypoints" id="lessonKeypoints"></div>
+          <div class="lesson-card__example" id="lessonExample" hidden></div>
+          <div class="lesson-card__footer">
+            <button class="btn btn--ghost" id="prevLessonBtn" type="button">← Munupati</button>
+            <button class="btn btn--success" id="completeLessonBtn" type="button">✓ Poorthayindi</button>
+            <button class="btn btn--primary" id="nextLessonBtn" type="button">Tharuvata →</button>
+          </div>
+        </article>
+      </section>
+
+      <section class="view" id="quizView" hidden>
+        <div class="quiz-header">
+          <button class="btn btn--ghost" id="backFromQuiz" type="button">← Back</button>
+          <h3 id="quizTitle">Module Quiz</h3>
+        </div>
+        <div class="quiz-container" id="quizContainer"></div>
+      </section>
+
+      <section class="view" id="glossaryView" hidden>
+        <h3 class="section-title">📖 F&O Glossary — Padakosham</h3>
+        <div class="glossary-search">
+          <input type="search" id="glossarySearch" placeholder="Padam vetakandi... (e.g. strike, premium, margin)">
+        </div>
+        <div class="glossary-list" id="glossaryList"></div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav">
+      <button class="bottom-nav__item active" data-view="dashboard" type="button">
+        <span>🏠</span><span>Home</span>
+      </button>
+      <button class="bottom-nav__item" data-view="lesson" type="button">
+        <span>📚</span><span>Learn</span>
+      </button>
+      <button class="bottom-nav__item" data-view="glossary" type="button">
+        <span>📖</span><span>Glossary</span>
+      </button>
+    </nav>
+  </div>
+
+  <div class="install-banner" id="installBanner" hidden>
+    <div class="install-banner__text">
+      <strong>📲 Phone lo install cheyandi!</strong>
+      <span>Home screen ki add chesi app laaga use cheyandi</span>
+    </div>
+    <div class="install-banner__actions">
+      <button class="btn btn--primary" id="installBannerBtn" type="button">Install</button>
+      <button class="btn btn--ghost install-banner__close" id="installBannerClose" type="button">✕</button>
+    </div>
+  </div>
+
+  <div class="install-modal" id="installModal" hidden>
+    <div class="install-modal__card">
+      <button class="install-modal__close" id="closeInstallModal" type="button">✕</button>
+      <h3>📲 iPhone lo App Install Cheyandi</h3>
+      <p class="install-ios-lead">Meeku iOS phone unte — <strong>Safari browser</strong> lo follow cheyandi:</p>
+      <div class="install-steps">
+        <div class="install-step install-step--highlight">
+          <span class="install-step__num">1</span>
+          <div>
+            <strong>Safari lo site open cheyandi</strong>
+            <p>Chrome kadu — <em>Safari</em> browser use cheyandi (iPhone default)</p>
+          </div>
+        </div>
+        <div class="install-step install-step--highlight">
+          <span class="install-step__num">2</span>
+          <div>
+            <strong>Share button click cheyandi</strong>
+            <p>Screen bottom (Safari) lo <em>Share icon (□↑)</em> click cheyandi</p>
+          </div>
+        </div>
+        <div class="install-step install-step--highlight">
+          <span class="install-step__num">3</span>
+          <div>
+            <strong>"Add to Home Screen" select cheyandi</strong>
+            <p>List lo scroll chesi <em>Add to Home Screen</em> tap cheyandi</p>
+          </div>
+        </div>
+        <div class="install-step install-step--highlight">
+          <span class="install-step__num">4</span>
+          <div>
+            <strong>"Add" click cheyandi</strong>
+            <p>Top right lo <em>Add</em> press cheyandi — Home screen lo F&O Course icon vastundi!</p>
+          </div>
+        </div>
+        <div class="install-step">
+          <span class="install-step__icon">🤖</span>
+          <div>
+            <strong>Android (Chrome)</strong>
+            <p>Menu (⋮) → <em>Install app</em> or <em>Add to Home screen</em></p>
+          </div>
+        </div>
+        <div class="install-step">
+          <span class="install-step__icon">💻</span>
+          <div>
+            <strong>Computer</strong>
+            <p>Chrome address bar lo install icon (⊕) click cheyandi</p>
+          </div>
+        </div>
+      </div>
+      <p class="install-note">App install chesaka internet lekunda kuda lessons chadavochu!</p>
+    </div>
+  </div>
+
+  <script src="js/ui.js"></script>
+  <script src="js/course-data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/install.js"></script>
+</body>
+</html>
