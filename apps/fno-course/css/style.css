@@ -410,6 +410,18 @@ body {
 .lesson-card__body {
   font-size: 0.95rem;
   margin-bottom: 1.25rem;
+  line-height: 1.75;
+}
+
+.lesson-card__roman-badge {
+  display: inline-block;
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
 }
 
 .lesson-card__body p {

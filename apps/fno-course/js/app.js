@@ -48,7 +48,7 @@
     const done = getCompletedCount();
     const pct = total ? Math.round((done / total) * 100) : 0;
     $("#overallProgress").style.width = `${pct}%`;
-    $("#progressText").textContent = `${pct}% పూర్తి`;
+    $("#progressText").textContent = UI.progress(pct);
   }
 
   function isLessonDone(id) {
@@ -163,34 +163,34 @@
 
     $("#lessonModuleLabel").textContent = `Module ${modIndex + 1}: ${currentModule.title}`;
     $("#lessonTitle").textContent = `${lesson.title} — ${lesson.titleTe}`;
-    $("#lessonBody").innerHTML = lesson.content;
+    $("#lessonBody").innerHTML = `<span class="lesson-card__roman-badge">📖 Roman Telugu lo</span>${lesson.content}`;
 
     const kp = $("#lessonKeypoints");
     kp.innerHTML = `
-      <h4>📌 Key Points</h4>
+      <h4>${UI.keyPoints}</h4>
       <ul>${lesson.keyPoints.map((p) => `<li>${p}</li>`).join("")}</ul>
     `;
 
     const ex = $("#lessonExample");
     if (lesson.example) {
       ex.hidden = false;
-      ex.innerHTML = `<h4>💡 Example</h4><p>${lesson.example}</p>`;
+      ex.innerHTML = `<h4>${UI.example}</h4><p>${lesson.example}</p>`;
     } else {
       ex.hidden = true;
     }
 
     const completeBtn = $("#completeLessonBtn");
     if (isLessonDone(lesson.id)) {
-      completeBtn.textContent = "✓ పూర్తయింది";
+      completeBtn.textContent = UI.completeLessonDone;
       completeBtn.disabled = true;
     } else {
-      completeBtn.textContent = "✓ పూర్తయింది";
+      completeBtn.textContent = UI.completeLesson;
       completeBtn.disabled = false;
     }
 
     $("#prevLessonBtn").disabled = currentLessonIndex === 0;
     const isLast = currentLessonIndex === currentModule.lessons.length - 1;
-    $("#nextLessonBtn").textContent = isLast ? "Quiz →" : "తదుపరి →";
+    $("#nextLessonBtn").textContent = isLast ? "Quiz →" : UI.nextLesson;
   }
 
   function completeLesson() {
@@ -240,9 +240,9 @@
         container.innerHTML = `
           <div class="quiz-result">
             <div class="quiz-result__score">${pct}%</div>
-            <h3>${pct >= 75 ? "🎉 Excellent!" : pct >= 50 ? "👍 Good effort!" : "📚 Review and retry"}</h3>
+            <h3>${pct >= 75 ? UI.quizExcellent : pct >= 50 ? UI.quizGood : UI.quizReview}</h3>
             <p>${score}/${quiz.length} correct answers</p>
-            <button class="btn btn--primary" id="quizDoneBtn" type="button">Continue →</button>
+            <button class="btn btn--primary" id="quizDoneBtn" type="button">${UI.quizContinue}</button>
           </div>
         `;
         $("#quizDoneBtn").addEventListener("click", () => {
@@ -259,7 +259,7 @@
       const q = quiz[currentQ];
       container.innerHTML = `
         <div class="quiz-q">
-          <span class="quiz-q__num">Question ${currentQ + 1}/${quiz.length}</span>
+          <span class="quiz-q__num">${UI.question(currentQ + 1, quiz.length)}</span>
           <h4>${q.q}</h4>
           <div class="quiz-q__options">
             ${q.options.map((opt, i) => `
@@ -285,7 +285,7 @@
 
           const fb = $("#quizFeedback");
           fb.hidden = false;
-          fb.textContent = correct ? "✅ Correct!" : `❌ Wrong! Answer: ${q.options[q.answer]}`;
+          fb.textContent = correct ? UI.quizCorrect : UI.quizWrong(q.options[q.answer]);
           fb.className = `quiz-q__feedback ${correct ? "success" : "error"}`;
 
           setTimeout(() => {
@@ -319,7 +319,7 @@
         <p class="glossary-item__te">${g.te}</p>
         <p class="glossary-item__def">${g.def}</p>
       </div>
-    `).join("") || '<p class="empty">No terms found</p>';
+    `).join("") || `<p class="empty">${UI.noTerms}</p>`;
   }
 
   // Event listeners

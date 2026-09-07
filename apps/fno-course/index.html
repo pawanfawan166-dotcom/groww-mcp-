@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>F&O Full Course | స్టాక్ మార్కెట్ ఫ్యూచర్స్ & ఆప్షన్స్</title>
+  <title>F&O Full Course | Stock Market Futures & Options</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="app">
@@ -16,14 +16,14 @@
         <span class="sidebar__logo">📈</span>
         <div>
           <h1 class="sidebar__title">F&O Master Course</h1>
-          <p class="sidebar__sub">A to Z స్టాక్ మార్కెట్</p>
+          <p class="sidebar__sub">A to Z Stock Market</p>
         </div>
       </div>
       <div class="sidebar__progress">
         <div class="progress-bar">
           <div class="progress-bar__fill" id="overallProgress"></div>
         </div>
-        <span class="progress-text" id="progressText">0% పూర్తి</span>
+        <span class="progress-text" id="progressText">0% poorthi</span>
       </div>
       <nav class="module-list" id="moduleList"></nav>
     </aside>
@@ -33,20 +33,19 @@
         <button class="menu-btn" id="menuBtn" type="button" aria-label="Toggle menu">☰</button>
         <div class="content__header-info">
           <h2 id="moduleTitle">F&O Full Course</h2>
-          <p id="moduleSubtitle">స్టాక్ మార్కెట్ నుండి F&O వరకు పూర్తి కోర్సు</p>
+          <p id="moduleSubtitle">Stock market nundi F&O varaku poorthi course</p>
         </div>
         <div class="header-stats">
           <span class="badge" id="lessonBadge">12 Modules</span>
         </div>
       </header>
 
-      <!-- Dashboard -->
       <section class="view active" id="dashboardView">
         <div class="hero">
           <div class="hero__content">
-            <h2>స్టాక్ మార్కెట్ F&O<br><span>పూర్తి కోర్సు</span></h2>
-            <p>Zero నుండి Hero వరకు — Futures & Options trading నేర్చుకోండి. Telugu + English లో సులభంగా.</p>
-            <button class="btn btn--primary btn--large" id="startCourseBtn" type="button">కోర్సు ప్రారంభించు →</button>
+            <h2>Stock Market F&O<br><span>Poorthi Course</span></h2>
+            <p>Zero nundi Hero varaku — Futures & Options trading nerchukondi. Roman Telugu + English lo sulabhamga.</p>
+            <button class="btn btn--primary btn--large" id="startCourseBtn" type="button">Course prarambhinchu →</button>
           </div>
           <div class="hero__stats">
             <div class="stat-card">
@@ -67,11 +66,10 @@
         <div class="module-grid" id="moduleGrid"></div>
 
         <div class="disclaimer">
-          <strong>⚠️ Disclaimer:</strong> ఈ కోర్సు కేవలం విద్యా ప్రయోజనాల కోసం. Trading లో risk ఉంటుంది. Real money invest చేయడానికి ముందు paper trading / demo account లో practice చేయండి.
+          <strong>⚠️ Disclaimer:</strong> Ee course kevalam vidya prayojanalu kosam. Trading lo risk untundi. Real money invest cheyadaniki mundhu paper trading / demo account lo practice cheyandi.
         </div>
       </section>
 
-      <!-- Lesson View -->
       <section class="view" id="lessonView" hidden>
         <div class="lesson-nav">
           <button class="btn btn--ghost" id="backToModules" type="button">← Modules</button>
@@ -86,14 +84,13 @@
           <div class="lesson-card__keypoints" id="lessonKeypoints"></div>
           <div class="lesson-card__example" id="lessonExample" hidden></div>
           <div class="lesson-card__footer">
-            <button class="btn btn--ghost" id="prevLessonBtn" type="button">← మునుపటి</button>
-            <button class="btn btn--success" id="completeLessonBtn" type="button">✓ పూర్తయింది</button>
-            <button class="btn btn--primary" id="nextLessonBtn" type="button">తదుపరి →</button>
+            <button class="btn btn--ghost" id="prevLessonBtn" type="button">← Munupati</button>
+            <button class="btn btn--success" id="completeLessonBtn" type="button">✓ Poorthayindi</button>
+            <button class="btn btn--primary" id="nextLessonBtn" type="button">Tharuvata →</button>
           </div>
         </article>
       </section>
 
-      <!-- Quiz View -->
       <section class="view" id="quizView" hidden>
         <div class="quiz-header">
           <button class="btn btn--ghost" id="backFromQuiz" type="button">← Back</button>
@@ -102,11 +99,10 @@
         <div class="quiz-container" id="quizContainer"></div>
       </section>
 
-      <!-- Glossary View -->
       <section class="view" id="glossaryView" hidden>
-        <h3 class="section-title">📖 F&O Glossary — పదకోశం</h3>
+        <h3 class="section-title">📖 F&O Glossary — Padakosham</h3>
         <div class="glossary-search">
-          <input type="search" id="glossarySearch" placeholder="పదం వెతకండి... (e.g. strike, premium, margin)">
+          <input type="search" id="glossarySearch" placeholder="Padam vetakandi... (e.g. strike, premium, margin)">
         </div>
         <div class="glossary-list" id="glossaryList"></div>
       </section>
@@ -125,6 +121,7 @@
     </nav>
   </div>
 
+  <script src="js/ui.js"></script>
   <script src="js/course-data.js"></script>
   <script src="js/app.js"></script>
 </body>
