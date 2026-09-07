@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A to Z Alphabet Learning | అక్షరాలు నేర్చుకోండి</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="header__brand">
+        <span class="header__logo" aria-hidden="true">🔤</span>
+        <div>
+          <h1 class="header__title">A to Z Learning</h1>
+          <p class="header__subtitle">అక్షరాలు A నుండి Z వరకు నేర్చుకోండి</p>
+        </div>
+      </div>
+      <div class="header__stats">
+        <div class="stat">
+          <span class="stat__value" id="learnedCount">0</span>
+          <span class="stat__label">నేర్చుకున్నవి</span>
+        </div>
+        <div class="stat">
+          <span class="stat__value" id="quizScore">0</span>
+          <span class="stat__label">క్విజ్ స్కోర్</span>
+        </div>
+      </div>
+    </header>
+
+    <nav class="tabs" role="tablist" aria-label="Learning modes">
+      <button class="tab active" data-mode="learn" role="tab" aria-selected="true">
+        <span class="tab__icon">📚</span>
+        <span>నేర్చుకోండి</span>
+      </button>
+      <button class="tab" data-mode="quiz" role="tab" aria-selected="false">
+        <span class="tab__icon">🎯</span>
+        <span>క్విజ్</span>
+      </button>
+      <button class="tab" data-mode="trace" role="tab" aria-selected="false">
+        <span class="tab__icon">✏️</span>
+        <span>ప్రాక్టీస్</span>
+      </button>
+    </nav>
+
+    <main class="main">
+      <!-- Learn Mode -->
+      <section class="panel active" id="learnPanel" role="tabpanel">
+        <div class="letter-grid" id="letterGrid"></div>
+        <article class="letter-detail" id="letterDetail" hidden>
+          <button class="btn btn--ghost back-btn" id="backBtn" type="button">← వెనక్కి</button>
+          <div class="letter-detail__hero" id="detailHero">
+            <span class="letter-detail__big" id="detailLetter">A</span>
+            <span class="letter-detail__emoji" id="detailEmoji">🍎</span>
+          </div>
+          <div class="letter-detail__info">
+            <h2 class="letter-detail__word" id="detailWord">Apple</h2>
+            <p class="letter-detail__telugu" id="detailTelugu">ఆపిల్ (ఆరోగ్యకరమైన పండు)</p>
+            <p class="letter-detail__hint" id="detailHint">A is for Apple</p>
+          </div>
+          <div class="letter-detail__actions">
+            <button class="btn btn--primary" id="speakBtn" type="button">
+              <span>🔊</span> వినండి
+            </button>
+            <button class="btn btn--success" id="markLearnedBtn" type="button">
+              <span>✅</span> నేర్చుకున్నాను
+            </button>
+            <button class="btn btn--secondary" id="nextBtn" type="button">
+              తదుపరి →
+            </button>
+          </div>
+        </article>
+      </section>
+
+      <!-- Quiz Mode -->
+      <section class="panel" id="quizPanel" role="tabpanel" hidden>
+        <div class="quiz-card" id="quizCard">
+          <p class="quiz-card__prompt">ఈ అక్షరం ఏది?</p>
+          <div class="quiz-card__emoji" id="quizEmoji">🍎</div>
+          <p class="quiz-card__word" id="quizWord">Apple</p>
+          <div class="quiz-options" id="quizOptions"></div>
+          <p class="quiz-feedback" id="quizFeedback" hidden></p>
+          <button class="btn btn--primary" id="quizNextBtn" type="button" hidden>తదుపరి ప్రశ్న →</button>
+        </div>
+        <div class="quiz-start" id="quizStart">
+          <div class="quiz-start__icon">🎯</div>
+          <h2>క్విజ్ ప్రారంభించండి!</h2>
+          <p>చిత్రం చూసి సరైన అక్షరం ఎంచుకోండి</p>
+          <button class="btn btn--primary btn--large" id="startQuizBtn" type="button">ప్రారంభించు</button>
+        </div>
+      </section>
+
+      <!-- Trace/Practice Mode -->
+      <section class="panel" id="tracePanel" role="tabpanel" hidden>
+        <div class="trace-card">
+          <div class="trace-nav">
+            <button class="btn btn--ghost" id="tracePrevBtn" type="button">←</button>
+            <span class="trace-current" id="traceCurrent">A</span>
+            <button class="btn btn--ghost" id="traceNextBtn" type="button">→</button>
+          </div>
+          <p class="trace-hint">అక్షరాన్ని చూసి గట్టిగా చెప్పండి</p>
+          <div class="trace-display">
+            <span class="trace-letter" id="traceLetter">A</span>
+            <span class="trace-emoji" id="traceEmoji">🍎</span>
+          </div>
+          <p class="trace-word" id="traceWord">Apple — ఆపిల్</p>
+          <button class="btn btn--primary btn--large" id="traceSpeakBtn" type="button">🔊 మాట్లాడండి</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Made with ❤️ for learning | A నుండి Z వరకు అన్నీ నేర్చుకోండి!</p>
+    </footer>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
