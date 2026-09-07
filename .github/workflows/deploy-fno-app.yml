@@ -1,0 +1,32 @@
+name: Deploy F&O Course App
+
+on:
+  push:
+    branches: [main, cursor/alphabet-learning-app-f59b]
+    paths:
+      - "apps/fno-course/**"
+      - ".github/workflows/deploy-fno-app.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prepare GitHub Pages site
+        run: |
+          mkdir -p _site
+          cp -r apps/fno-course/. _site/
+          touch _site/.nojekyll
+
+      - name: Deploy to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+          publish_branch: gh-pages
+          commit_message: "Deploy F&O Course app"

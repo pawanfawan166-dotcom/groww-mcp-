@@ -54,11 +54,14 @@
       if (e.target.id === "installModal") e.target.hidden = true;
     });
 
-    // Show manual install help on mobile if no native prompt
-    setTimeout(() => {
-      if (!isInstalled() && !deferredPrompt && /Android|iPhone|iPad/i.test(navigator.userAgent)) {
-        showBanner();
-      }
-    }, 2000);
+    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (isIOS && !isInstalled()) {
+      showBanner();
+      setTimeout(() => {
+        $("#installModal").hidden = false;
+      }, 800);
+    } else if (!isInstalled() && /Android/i.test(navigator.userAgent)) {
+      showBanner();
+    }
   });
 })();
