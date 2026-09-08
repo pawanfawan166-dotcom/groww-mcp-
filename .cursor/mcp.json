@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "indian-market": {
+      "command": "uvx",
+      "args": ["--with", "mcp<2", "indian-market-mcp"]
+    },
+    "groww-mcp": {
+      "command": "groww-mcp",
+      "args": ["--transport", "stdio"],
+      "env": {
+        "GROWW_ACCESS_TOKEN": "${env:GROWW_ACCESS_TOKEN}"
+      }
+    }
+  }
+}

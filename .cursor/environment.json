@@ -1,0 +1,10 @@
+{
+  "name": "groww-mcp-trading",
+  "install": "bash scripts/cloud-agent-install.sh",
+  "mcpServerAllowlist": [
+    "uvx",
+    "indian-market-mcp",
+    "groww-mcp",
+    "https://indian-market-mcp-wweh.onrender.com/mcp"
+  ]
+}
