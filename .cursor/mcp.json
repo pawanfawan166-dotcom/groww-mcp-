@@ -1,6 +1,9 @@
 {
   "mcpServers": {
     "indian-market": {
+      "url": "https://indian-market-mcp-wweh.onrender.com/mcp"
+    },
+    "indian-market-local": {
       "command": "uvx",
       "args": ["--with", "mcp<2", "indian-market-mcp"]
     },
