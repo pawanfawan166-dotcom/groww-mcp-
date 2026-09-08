@@ -57,18 +57,26 @@ ruff check .
 
 ## Cursor MCP configuration
 
+Project MCP config lives in `.cursor/mcp.json` and installs `indian-market-mcp` during Cloud Agent setup.
+
 ```json
 {
   "mcpServers": {
+    "indian-market": {
+      "command": "uvx",
+      "args": ["--with", "mcp<2", "indian-market-mcp"]
+    },
     "groww-mcp": {
       "command": "groww-mcp",
       "args": ["--transport", "stdio"],
       "env": {
-        "GROWW_MOCK_MODE": "1"
+        "GROWW_ACCESS_TOKEN": "${env:GROWW_ACCESS_TOKEN}"
       }
     }
   }
 }
 ```
 
-Replace mock mode with your Groww credentials for live trading data.
+For live Groww data, set `GROWW_ACCESS_TOKEN` in Cursor secrets. For local mock mode, set `GROWW_MOCK_MODE=1` instead.
+
+After changing MCP config, restart the Cloud Agent or reload MCP from Cursor **Customize**.
